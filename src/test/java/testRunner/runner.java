@@ -11,7 +11,6 @@ import utils.DriverFactory;
         plugin = {
                 "summary", "pretty", "html:Reports/CucumberReport/Reports.html"
         },publish = true
-        //mvn test -Dcucumber.filter.tags="@debug"
 )
 public class runner extends AbstractTestNGCucumberTests {
     static WebDriver driver = DriverFactory.getDriver();

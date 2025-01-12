@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.log4testng.Logger;
 import utils.ElementHelper;
 
 import java.time.Duration;
@@ -28,7 +29,11 @@ public class HomePage {
         elementHelper.click(search_Button);
     }
     public void closeTheFirstVisitModal(){
-        elementHelper.click(modal_close_button);
+        if (elementHelper.checkElement(modal_close_button)){
+            elementHelper.click(modal_close_button);
+        }
+        else {
+            Logger.getLogger(getClass()).info("Modal is not displayed");
+        }
     }
-
 }

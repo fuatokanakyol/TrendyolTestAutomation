@@ -12,11 +12,6 @@ public class SearchDefinitions {
     HomePage homePage =new HomePage();
     SearchResultPage searchResultPage = new SearchResultPage();
 
-
-    @When("close the first popup")
-    public void close_first_visit_modal() {
-        homePage.closeTheFirstVisitModal();
-    }
     @When("Search for a product called {string} using the search bar.")
     public void click_search_button(String searchItem) {
         homePage.searchSomeValue(searchItem);
