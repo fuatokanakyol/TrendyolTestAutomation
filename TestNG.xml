@@ -1,0 +1,9 @@
+<suite name = "WikipediaCucumberProject">
+
+    <test name = "Cucumber" >
+        <parameter name = "browser" value = "Chrome" />
+        <classes>
+            <class name = "testRunner.runner"/>
+        </classes>
+    </test>
+</suite>
