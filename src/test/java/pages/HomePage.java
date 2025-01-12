@@ -14,7 +14,8 @@ public class HomePage {
     WebDriverWait wait;
 
     static By search_input = By.xpath("//input[@data-testid='suggestion']");
-    static By search_Button=By.xpath("//i[@data-testid='search-icon'");
+    static By search_Button=By.xpath("//i[@data-testid='search-icon']");
+    static By modal_close_button = By.xpath("//div[@class=\"modal-close\"]");
 
     public HomePage(){
         driver = utils.DriverFactory.getDriver();
@@ -23,8 +24,11 @@ public class HomePage {
     }
 
     public void searchSomeValue(String searchItem){
-        elementHelper.writeToElement(search_input,searchItem);
+        elementHelper.writeToElement(search_input, searchItem);
         elementHelper.click(search_Button);
+    }
+    public void closeTheFirstVisitModal(){
+        elementHelper.click(modal_close_button);
     }
 
 }

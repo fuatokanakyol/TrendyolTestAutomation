@@ -1,11 +1,10 @@
 package utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.testng.Reporter;
+
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -15,22 +14,26 @@ public class DriverFactory {
 
     public static WebDriver initialize_Driver() {
         properties = ConfigReader.getProperties();
-        String value = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
-        //String value = ConfigReader.getProperties().getProperty("browser");
-        if (value.equals("Chrome")) {
-            System.setProperty("webdriver.chrome.driver","./src/test/java/libraries/chromedriver.exe");
 
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless");
-            driver = new ChromeDriver(options);
-
-        } else if (value.equals("Firefox")) {
-            System.setProperty("webdriver.gecko.driver","./src/test/java/libraries/geckodriver.exe");
-            driver = new FirefoxDriver();
-        } else if (value.equals("Safari")) {
-            driver = new SafariDriver();
-        } else {
-            driver = new EdgeDriver();
+        String value = ConfigReader.getProperties().getProperty("browser");
+        switch (value) {
+            case "Chrome":
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
+            case "Firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver = new FirefoxDriver();
+                ;
+                break;
+            case "Safari":
+                WebDriverManager.safaridriver().setup();
+                driver = new SafariDriver();
+                break;
+            default:
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver();
+                break;
         }
         String url = properties.getProperty("url");
         int pageWait = Integer.parseInt(properties.getProperty("pageLoadTimeout"));
