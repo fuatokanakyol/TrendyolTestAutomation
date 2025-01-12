@@ -31,6 +31,12 @@ public class ElementHelper {
         driver.findElement(locator).click();
         logger.info("Bulunan Elemente tıklandı");
     }
+    public void waitAndClick(By locator) throws InterruptedException {
+        checkElement(locator);
+        wait(2);
+        driver.findElement(locator).click();
+        logger.info("Bulunan Elemente tıklandı");
+    }
     public void doubleClick(By locator, int times) throws InterruptedException {
         checkElement(locator);
         for(int i=0; i<times; i++){
@@ -47,6 +53,10 @@ public class ElementHelper {
     }
     public void wait(int saniye) throws InterruptedException {
         Thread.sleep(saniye * 1000);
+    }
+    public void getLocaterText(By locator) {
+        checkElement(locator);
+        driver.findElement(locator).getText();
     }
     public boolean checkElement(By locator){
         try {
@@ -77,21 +87,23 @@ public class ElementHelper {
         elements.get(index).click();
         logger.info("Bulunan Elemente Random Metodu Ile Tiklandi");
     }
-    public void saveValue(String key, String val){
-        keyMap.put(key,val);
+    public void saveValue(String key, String val) {
+            keyMap.put(key, val);
     }
-    public void saverMethod(By locator, String key){
+    public void saverMethod(By locator, String key) {
         String savedTxt = driver.findElement(locator).getText();
-        saveValue(key,savedTxt);
-        logger.info(locator + " Elementinde Bulunan " + savedTxt +" Text Degeri " + key + " Adiyla Kaydedildi");
+        saveValue(key, savedTxt);
     }
-    public String getValue(String key){
-        return keyMap.get(key).toString();
+    public String getValue(String key) {
+        return keyMap.get(key);
     }
-    public void checkerMethod(By locator, String key){
+    public void checkerMethod(By locator, String key) {
         String checkedTxt = driver.findElement(locator).getText();
-        //" assert .assertEquals(getValue(key), checkedTxt);
-        logger.info(key + " Adiyla Kaydedilmis Text Degeri " + locator + " Icerisinde Bulunan " + checkedTxt + " Ile Karsilastirildi");
+        String expectedTxt = getValue(key);
+
+        System.out.println("Expected Text: " + expectedTxt);
+        System.out.println("Checked Text: " + checkedTxt);
+
     }
 }
 

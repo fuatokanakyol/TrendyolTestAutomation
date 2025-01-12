@@ -17,6 +17,7 @@ public class HomePage {
     static By search_input = By.xpath("//input[@data-testid='suggestion']");
     static By search_Button=By.xpath("//i[@data-testid='search-icon']");
     static By modal_close_button = By.xpath("//div[@class=\"modal-close\"]");
+    static By myBasketButton = By.xpath("//a[@class=\"link account-basket\"]");
 
     public HomePage(){
         driver = utils.DriverFactory.getDriver();
@@ -35,5 +36,8 @@ public class HomePage {
         else {
             Logger.getLogger(getClass()).info("Modal is not displayed");
         }
+    }
+    public void goToBasket() throws InterruptedException {
+        elementHelper.waitAndClick(myBasketButton);
     }
 }
