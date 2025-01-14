@@ -10,44 +10,54 @@ Bu proje Selenium WebDriver, TestNG ve Cucumber kullanılarak oluşturulmuş bir
 * ChromeDriver
 
 ## Kurulum
-1. Projeyi klonlayın:
-```bash
-    git clone <https://github.com/fuatokanakyol/TrendyolTestAutomation.git>
 
-    cd TrendyolTestAutomation
-```
+1. Projeyi klonlayın:
+   ```bash
+   git clone https://github.com/fuatokanakyol/TrendyolTestAutomation.git
+   cd TrendyolTestAutomation
+   ```
+
 2. Bağımlılıkları yükleyin:
-mvn clean install
+   ```bash
+   mvn clean install
+   ```
 
 3. Testleri çalıştırma:
-mvn clean test -Dtest=runner
-mvn clean test -Dtest=runner -Dcucumber.filter.tags="@smoke"
+   ```bash
+   mvn clean test -Dtest=runner
+   mvn clean test -Dtest=runner -Dcucumber.filter.tags="@smoke"
+   ```
 
-4. Poje yapısı:
+## Proje Yapısı
+
+```
 src
 ├── test
 │   ├── java
-│   │   ├── features          # Cucumber feature dosyaları
-│   │   ├── pages            # Page Object Model sınıfları
-│   │   ├── stepDefinitions  # Cucumber step tanımlamaları
+│   │   ├── features         # Cucumber feature dosyaları
+│   │   ├── pages           # Page Object Model sınıfları
+│   │   ├── stepDefinitions # Cucumber step tanımlamaları
 │   │   └── utils           # Yardımcı sınıflar
 │   └── resources
 │       └── config.properties # Konfigürasyon dosyası
+```
 
+## Raporlama
 
-5. Raporlama:
-Test raporları şu konumda oluşturulur: Reports.html
+Test raporları `Reports.html` dosyasında oluşturulur.
 
-6. Tech Stack:
-Selenium WebDriver
-TestNG
-Cucumber
-Maven
-Java
+## Tech Stack
 
-7. Not:
+* Selenium WebDriver
+* TestNG
+* Cucumber
+* Maven
+* Java
 
-Testleri çalıştırmadan önce:
-Chrome tarayıcının yüklü olduğundan emin olun
-ChromeDriver'ın PATH'e eklendiğinden emin olun
-Java ve Maven'ın doğru kurulu olduğundan emin olun
+## Önemli Notlar
+
+Testleri çalıştırmadan önce aşağıdakileri kontrol edin:
+
+* Chrome tarayıcının yüklü olduğundan emin olun
+* ChromeDriver'ın PATH'e eklendiğinden emin olun
+* Java ve Maven'ın doğru kurulu olduğundan emin olun
