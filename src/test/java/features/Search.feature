@@ -1,26 +1,26 @@
-Feature: Search Product
-  Scenario: Search some value
+Feature: Trendyol 
+  Scenario: Search Functionality
     When Search for a product called "kablosuz kulaklik" using the search bar.
     When Verify that the search results are displayed.
     Then Validate that the results contain the searched keyword.
 
-  Scenario: Scenario-2
+  Scenario: Product Selection
     When Search for a product called "kablosuz kulaklik" using the search bar.
     When From the search results, click on a product to open its details page.
     Then Verify that the product name, price, and availability status are displayed correctly.
 
-  Scenario: Scenario-3
+  Scenario: Add to Cart
     When Search for a product called "kablosuz kulaklik" using the search bar.
     When From the search results, click on a product to open its details page.
     When Add the selected product to the cart.
     Then Verify that the product appears in the cart with the correct details
 
-  Scenario: Scenario-4
+  Scenario: Cart Price Validation
     When Search for a product called "kablosuz kulaklik" using the search bar.
     When Add multiple items to the cart.
     Then Verify that the total price in the cart matches the sum of individual product prices.
 
-  Scenario: Scenario-5
+  Scenario: Remove the Item from the Cart
     When Search for a product called "kablosuz kulaklik" using the search bar.
     When From the search results, click on a product to open its details page.
     When Add the selected product to the cart.

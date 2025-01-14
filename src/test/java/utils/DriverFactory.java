@@ -6,9 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
-
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 public class DriverFactory {
     static WebDriver driver;
@@ -57,12 +55,8 @@ public class DriverFactory {
                 break;
         }
         String url = properties.getProperty("url");
-        int pageWait = Integer.parseInt(properties.getProperty("pageLoadTimeout"));
-        int impWait = Integer.parseInt(properties.getProperty("implicitlyWait"));
         driver.get(url);
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(pageWait, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(impWait, TimeUnit.SECONDS);
         return getDriver();
     }
     public static WebDriver getDriver() {
