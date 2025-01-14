@@ -35,13 +35,3 @@ jobs:
         name: cucumber-reports
         path: Reports/CucumberReport/Reports.html
         retention-days: 30
-        
-    - name: Archive TestNG Reports
-      uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: testng-reports
-        path: |
-          target/surefire-reports/emailable-report.html
-          target/surefire-reports/index.html
-        retention-days: 30
