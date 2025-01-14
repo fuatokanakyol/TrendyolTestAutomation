@@ -9,8 +9,11 @@ import utils.DriverFactory;
         glue = {"stepDefinitions", "utils"},
         tags = "",
         plugin = {
-                "summary", "pretty", "html:Reports/CucumberReport/Reports.html"
-        },publish = true
+                "summary", 
+                "pretty", 
+                "html:Reports/CucumberReport/Reports.html"
+                },
+        publish = true
 )
 public class runner extends AbstractTestNGCucumberTests {
     static WebDriver driver = DriverFactory.getDriver();
