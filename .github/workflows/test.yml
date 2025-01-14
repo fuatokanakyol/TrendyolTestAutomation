@@ -23,9 +23,14 @@ jobs:
         
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: stable
         
     - name: Run Tests
-      run: mvn clean test -Dtest=runner
+      run: |
+        export DISPLAY=:99
+        sudo Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
+        mvn clean test -Dtest=runner -Dwebdriver.chrome.args="--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --disable-software-rasterizer"
       continue-on-error: true
       
     - name: Archive Cucumber Reports
